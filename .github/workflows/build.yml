@@ -11,23 +11,8 @@ env:
   SOLUTION_FILE_PATH: .\RutaiModManager.sln
 
 jobs:
-  loader:
-    name: Rutai Mod Loader
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Install MinGW-w64
-      run: sudo apt-get update && sudo apt-get install -y gcc-mingw-w64-i686 zip
-
-    - name: Build
-      working-directory: RutaiModLoader
-      run: make
-
-    - uses: actions/upload-artifact@v4
-      with:
-        name: RutaiModLoader
-        path: RutaiModLoader/build/RutaiModLoader.dll
+  # The mod loader is built and released from its own repository:
+  # https://github.com/thezenoverse/SumoModLoader
 
   build:
     name: ${{matrix.configuration}}
